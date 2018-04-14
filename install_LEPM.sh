@@ -29,6 +29,7 @@ net-snmp-devel libevent-devel libtool-ltdl-devel libc-client-devel postgresql-de
 #yum install devtoolset-2-gcc-c++ devtoolset-2-gcc-gfortran -y
 
 #before install
+cd ~
 script_pwd=`pwd`
 script_source="${script_pwd}/src"
 

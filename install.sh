@@ -713,23 +713,34 @@ done
 
 #Install mariaDB 10.2
 INSTALL_MARIADB() {
-	cat << 'EOF' >> /etc/yum.repos.d/MariaDB.repo
+	if [ $isCent6 == true ]; then
+		cat << 'EOF' >> /etc/yum.repos.d/MariaDB.repo
+[mariadb]
+name = MariaDB
+baseurl = http://yum.mariadb.org/10.2/centos6-amd64/
+gpgkey=https://yum.mariadb.org/RPM-GPG-KEY-MariaDB
+gpgcheck=1
+EOF
+	yum repolist
+	yum install MariaDB-server MariaDB-client -y
+	mv /etc/my.cnf /etc/my.cnf.bak
+	cp -f /usr/share/mysql/my-large.cnf /etc/my.cnf
+		chkconfig mysqld on
+		/etc/init.d/mysqld stop
+		/etc/init.d/mysqld start
+		echo "Finished install mariadb, use command *mysql_secure_installation* to setting password user root mysql!"
+	elif [ $isCent7 == true ]; then
+		cat << 'EOF' >> /etc/yum.repos.d/MariaDB.repo
 [mariadb]
 name = MariaDB
 baseurl = http://yum.mariadb.org/10.2/centos7-amd64
 gpgkey=https://yum.mariadb.org/RPM-GPG-KEY-MariaDB
 gpgcheck=1
 EOF
-
+	yum repolist
 	yum install MariaDB-server MariaDB-client -y
 	mv /etc/my.cnf /etc/my.cnf.bak
 	cp -f /usr/share/mysql/my-large.cnf /etc/my.cnf
-	if [ $isCent6 == true ]; then
-		chkconfig mysqld on
-		/etc/init.d/mysqld stop
-		/etc/init.d/mysqld start
-		echo "Finished install mariadb, use command *mysql_secure_installation* to setting password user root mysql!"
-	elif [ $isCent7 == true ]; then
 		systemctl enable mariadb.service
 		systemctl stop mariadb.service
 		systemctl start mariadb.service

@@ -14,9 +14,9 @@ yum install -y wget git perl-ExtUtils-Embed pam-devel gcc gcc-c++ make geoip-dev
 #For PHP compile
 
 yum groupinstall -y 'Development Tools'
-yum install -y libxml2-devel libXpm-devel gmp-devel libicu-devel t1lib-devel aspell-devel openssl-devel `\
-bzip2-devel libcurl-devel libjpeg-devel libvpx-devel libpng-devel freetype-devel readline-devel libtidy-devel `\
-libxslt-devel libmcrypt-devel pcre-devel curl-devel mysql-devel ncurses-devel gettext-devel `\
+yum install -y libxml2-devel libXpm-devel gmp-devel libicu-devel t1lib-devel aspell-devel openssl-devel \
+bzip2-devel libcurl-devel libjpeg-devel libvpx-devel libpng-devel freetype-devel readline-devel libtidy-devel\
+libxslt-devel libmcrypt-devel pcre-devel curl-devel mysql-devel ncurses-devel gettext-devel\
 net-snmp-devel libevent-devel libtool-ltdl-devel libc-client-devel postgresql-devel
 
 
@@ -373,7 +373,7 @@ SCRIPT_STARTUP_PHP5() {
 	cd $script_pwd
 	if [ $isCent6 == true ]; then
 		#create file startup service for centOS 6
-		cat << "EOF" >> /etc/init.d/php56-fpm
+		cat << 'EOF' >> /etc/init.d/php56-fpm
 #! /bin/sh
 ### BEGIN INIT INFO
 # Provides:          php-5.6-fpm
@@ -483,7 +483,7 @@ EOF
 		/etc/init.d/php56-fpm start
 	elif [ $isCent7 == true ]; then
 		#create file startup service for centOS 7
-		cat << "EOF" >> /lib/systemd/system/php56-fpm.service
+		cat << 'EOF' >> /lib/systemd/system/php56-fpm.service
 [Unit]
 Description=The PHP 5.6 FastCGI Process Manager
 After=network.target
@@ -563,7 +563,7 @@ SCRIPT_STARTUP_PHP7() {
 	cd $script_pwd
 	if [ $isCent6 == true ]; then
 		#create script startup file for centOS 6
-		cat << "EOF" >> /etc/init.d/php71-fpm
+		cat << 'EOF' >> /etc/init.d/php71-fpm
 #! /bin/sh
 ### BEGIN INIT INFO
 # Provides:          php71-fpm
@@ -619,7 +619,7 @@ case "$1" in
         ;;
         stop)
                 echo -n "Gracefully shutting down php-fpm "
-                if [ ! -r $php_fpm_PID ]; then
+                if [ ! -r $php_fpm_PID ] ; then
                         echo "warning, no pid file found - php-fpm is not running ?"
                         exit 1
                 fi
@@ -674,7 +674,7 @@ EOF
 		/etc/init.d/php71-fpm start
 	elif [ $isCent7 == true ]; then
 		#create script startup file for centOS 7
-		cat << "EOF" >> /lib/systemd/system/php71-fpm.service
+		cat << 'EOF' >> /lib/systemd/system/php71-fpm.service
 [Unit]
 Description=The PHP FastCGI Process Manager
 After=network.target
@@ -713,7 +713,7 @@ done
 
 #Install mariaDB 10.2
 INSTALL_MARIADB() {
-	cat << "EOF" >> /etc/yum.repos.d/MariaDB.repo
+	cat << 'EOF' >> /etc/yum.repos.d/MariaDB.repo
 [mariadb]
 name = MariaDB
 baseurl = http://yum.mariadb.org/10.2/centos7-amd64

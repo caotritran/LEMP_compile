@@ -619,7 +619,7 @@ case "$1" in
         ;;
         stop)
                 echo -n "Gracefully shutting down php-fpm "
-                if [ ! -r $php_fpm_PID ] ; then
+                if [ ! -r $php_fpm_PID ]; then
                         echo "warning, no pid file found - php-fpm is not running ?"
                         exit 1
                 fi

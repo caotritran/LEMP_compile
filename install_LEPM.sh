@@ -14,9 +14,9 @@ yum install -y wget git perl-ExtUtils-Embed pam-devel gcc gcc-c++ make geoip-dev
 #For PHP compile
 
 yum groupinstall -y 'Development Tools'
-yum install -y libxml2-devel libXpm-devel gmp-devel libicu-devel t1lib-devel aspell-devel openssl-devel \
-bzip2-devel libcurl-devel libjpeg-devel libvpx-devel libpng-devel freetype-devel readline-devel libtidy-devel\
-libxslt-devel libmcrypt-devel pcre-devel curl-devel mysql-devel ncurses-devel gettext-devel\
+yum install -y libxml2-devel libXpm-devel gmp-devel libicu-devel t1lib-devel aspell-devel openssl-devel `\
+bzip2-devel libcurl-devel libjpeg-devel libvpx-devel libpng-devel freetype-devel readline-devel libtidy-devel `\
+libxslt-devel libmcrypt-devel pcre-devel curl-devel mysql-devel ncurses-devel gettext-devel `\
 net-snmp-devel libevent-devel libtool-ltdl-devel libc-client-devel postgresql-devel
 
 
@@ -765,7 +765,3 @@ select i in "${selection[@]}"; do
 			*) echo "invalid option"
 	esac
 done
-
-
-
-

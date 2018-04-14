@@ -725,9 +725,9 @@ EOF
 	yum install MariaDB-server MariaDB-client -y
 	mv /etc/my.cnf /etc/my.cnf.bak
 	cp -f /usr/share/mysql/my-large.cnf /etc/my.cnf
-		chkconfig mysqld on
-		/etc/init.d/mysqld stop
-		/etc/init.d/mysqld start
+		chkconfig mysql on
+		/etc/init.d/mysql stop
+		/etc/init.d/mysql start
 		echo "Finished install mariadb, use command *mysql_secure_installation* to setting password user root mysql!"
 	elif [ $isCent7 == true ]; then
 		cat << 'EOF' >> /etc/yum.repos.d/MariaDB.repo

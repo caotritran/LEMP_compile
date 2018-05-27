@@ -555,7 +555,7 @@ COMPILE_PHP_7() {
 	cp -f $script_source/php-7.1.16/php.ini-production /opt/php-7.1/lib/php.ini
 	cp -f /opt/php-7.1/etc/php-fpm.conf.default /opt/php-7.1/etc/php-fpm.conf
 	sed -i 's|;pid = run/php-fpm.pid|pid = run/php-fpm.pid|g' /opt/php-7.1/etc/php-fpm.conf
-	echo -e "listen = /var/run/php7.1-fpm.sock" >> /opt/php-7.1/etc/php-fpm.conf
+	##echo -e "listen = /var/run/php7.1-fpm.sock" >> /opt/php-7.1/etc/php-fpm.conf
 	cp -f /opt/php-7.1/etc/php-fpm.d/www.conf.default /opt/php-7.1/etc/php-fpm.d/www.conf
 }
 
